@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot de Opiniones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b3ecb6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #26bc19;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .chat-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+        }
+        .chat-message.user {
+            text-align: right;
+        }
+        .chat-message.bot {
+            text-align: left;
+        }
+        .user-message {
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 70%;
+            display: inline-block;
+        }
+        .bot-message {
+            background-color: #008CBA;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 70%;
+            display: inline-block;
+        }
+        .feedback-message {
+            background-color: #e79634;
+            border: 1px solid #13110d;
+            border-radius: 5px;
+            padding: 10px;
+            margin-left: auto;
+            max-width: 70%;
+        }
+        .feedback-form {
+            max-width: 400px;
+        }
+        textarea, button {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido al Chatbot de Opiniones</h1>
+    </header>
+
+    <main>
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-box" id="chatBox">
+                <div class="chat-message bot">
+                    <p>Hola, ¿cómo puedo ayudarte hoy?</p>
+                </div>
+            </div>
+            <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+
+        <div class="feedback-form">
+            <h2>¿Qué opinas de nuestra atención al cliente o producto?</h2>
+            <textarea id="feedbackInput" rows="4" placeholder="Escribe tu opinión aquí..."></textarea>
+            <button onclick="sendFeedback()">Enviar Opinión</button>
+        </div>
+    </main>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("userInput").value;
+            var chatBox = document.getElementById("chatBox");
+            var newMessage = document.createElement("div");
+            newMessage.classList.add("chat-message");
+            newMessage.classList.add("user");
+            newMessage.innerHTML = '<div class="user-message">' + userInput + '</div>';
+            chatBox.appendChild(newMessage);
+            // Aquí podrías llamar a una función que maneje la respuesta del robot
+            handleRobotResponse(userInput);
+            document.getElementById("userInput").value = "";
+        }
+
+        function handleRobotResponse(userInput) {
+            var chatBox = document.getElementById("chatBox");
+            var newMessage = document.createElement("div");
+            newMessage.classList.add("chat-message");
+            newMessage.classList.add("bot");
+            if (userInput.toLowerCase().includes("menu")) {
+                newMessage.innerHTML = '<div class="bot-message">Aquí tienes nuestro menú: [Descripción del menú]</div>';
+            } else if (userInput.toLowerCase().includes("horarios")) {
+                newMessage.innerHTML = '<div class="bot-message">Nuestros horarios son: [Horarios]</div>';
+            } else if (userInput.toLowerCase().includes("precios")) {
+                newMessage.innerHTML = '<div class="bot-message">Nuestros precios son: [Precios]</div>';
+            } else if (userInput.toLowerCase().includes("ubicación")) {
+                newMessage.innerHTML = '<div class="bot-message">Nuestra ubicación es: [Ubicación]</div>';
+            } else {
+                newMessage.innerHTML = '<div class="bot-message">¡Hola! Soy el robot y estoy aquí para ayudarte.</div>';
+            }
+            chatBox.appendChild(newMessage);
+        }
+
+        function sendFeedback() {
+            var feedbackInput = document.getElementById("feedbackInput").value;
+            // Aquí podrías enviar la opinión a tu servidor o hacer algo con ella
+            var feedbackBox = document.createElement("div");
+            feedbackBox.classList.add("feedback-box");
+            feedbackBox.innerHTML = '<div class="feedback-message">' + feedbackInput + '</div>';
+            document.body.appendChild(feedbackBox);
+            console.log("Opinión enviada: " + feedbackInput);
+            document.getElementById("feedbackInput").value = "";
+        }
+    </script>
+</body>
+</html>

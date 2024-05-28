@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <title>Menú </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taqueria Entre Tortillas</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #b9efab;
+            color: #121111;
+        }
+        .menu {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+        .menu-header {
+            background-color: #24c14b;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+            
+        }
+        .menu-section {
+            border-top: 3px solid #f4efef;
+        }
+        .menu-section h2 {
+            margin: 0;
+            padding: 10px;
+            background-color: #ff9800;
+            color: #fff;
+            cursor: pointer;
+        }
+        .menu-items {
+            display: none;
+            padding: 10px;
+        }
+        .menu-item {
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .price {
+            float: right;
+        }
+        #generar-pdf, #enviar-email {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #24c14b;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #email-field {
+            width: 280px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: block;
+        }
+        /* Agregamos estilos para el carrusel */
+        .carousel {
+            display: flex; /* Usa flexbox para alinear elementos */
+            justify-content: center; /* Centra los elementos horizontalmente */
+            align-items: center; /* Centra los elementos verticalmente */
+            width: 100%; /* Ancho del carrusel */
+            overflow: hidden; /* Oculta el desbordamiento */
+            margin: 30px auto; /* Margen superior e inferior de 20px y centrado horizontal */
+
+
+        }
+
+         /* Establece un tamaño fijo para las imágenes en el carrusel */
+        .carousel img {
+            width: 100px; /* Establece el ancho deseado */
+            height: 100px; /* Establece la altura deseada */
+            object-fit: cover; /* Ajusta la imagen para cubrir el tamaño definido */
+        }
+
+        .logo {
+            position: absolute; /* Establece posición absoluta para la imagen del logo */
+            top: 150px; /* Ajusta la distancia desde la parte superior */
+            left: 100px; /* Ajusta la distancia desde la izquierda */
+            width: 400px; /* Establece el ancho deseado para el logo */
+            height: auto; /* Altura automática para mantener la proporción */
+            border-radius: 50%; /* Aplica un radio de borde para crear la forma de círculo */
+            overflow: hidden; /* Oculta cualquier contenido que se desborde del círculo */
+        }
+
+        .frase {
+            position: absolute; /* Establece posición absoluta para la frase en cursiva */
+            top: 50%; /* Ajusta la posición verticalmente al 50% del contenedor */
+            right: 200px; /* Ajusta la distancia desde la derecha */
+            transform: translateY(-50%); /* Centra verticalmente la frase */
+            font-family: "Poetsen One", sans-serif;
+            color: #1b1515; /* Cambia el color de la frase en cursiva si es necesario */
+            font-weight: 600;
+            font-style: normal;
+        }
+        @media (max-width: 600px) {
+            .menu {
+                width: 90%; /* Ajusta el ancho al 90% del contenedor */
+                margin: 20px auto; /* Redefine el margen */
+            }
+            .menu-header {
+                font-size: 20px; /* Reduce el tamaño del encabezado */
+            }
+            .menu-section h2 {
+                font-size: 18px; /* Reduce el tamaño de los encabezados de sección */
+            }
+            .carousel {
+                display: none; /* Oculta el carrusel en dispositivos móviles */
+            }
+            .logo {
+                width: 150px; /* Reduce el tamaño del logo */
+            }
+            .frase {
+                font-size: 16px; /* Reduce el tamaño de la frase */
+            }
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <!-- Agregamos una sección para el carrusel -->
+    <div class="carousel">
+        <img src="Chorizo.jpg" alt="Chorizo">
+        <img src="machito.jpg" alt="Machito">
+        <img src="chuleta.jpg" alt="Chuleta">
+        <img src="alambre.jpg" alt="Alambre">
+        <img src="arrachera.jpg" alt="Arrachera">
+        <img src="pastor.jpg" alt="Pastor">
+        <img src="bistcek.jpg" alt="Bistec">
+        <img src="pollo.jpg" alt="Pollo">
+        <img src="combinado.jpg" alt="Combinado">
+        <img src="birria.jpg" alt="Birria">
+
+
+
+        <!-- Agrega más imágenes según sea necesario -->
+    </div>
+    <div class="menu">
+        <div class="menu-header">Menú para los comensales</div>
+        
+        <div class="menu-section" id="tacos-section">
+            <h2>Tacos</h2>
+            <div class="menu-items">
+                <div class="menu-item">Tacos de Chorizo <span class="price">$10</span></div>
+                <div class="menu-item">Taco de Machito <span class="price">$12</span></div>
+                <div class="menu-item">Taco de Chuleta <span class="price">$11</span></div>
+                <div class="menu-item">Taco de Alambre <span class="price">$13</span></div>
+                <div class="menu-item">Taco de Arrachera <span class="price">$14</span></div>
+                <div class="menu-item">Taco de Pastor <span class="price">$10</span></div>
+                <div class="menu-item">Taco de Bisteck <span class="price">$12</span></div>
+                <div class="menu-item">Taco de Pollo <span class="price">$9</span></div>
+                <div class="menu-item">Taco de Combinado <span class="price">$15</span></div>
+            </div>
+        </div>
+        
+        <div class="menu-section" id="quesadillas-section">
+            <h2>Quesadillas</h2>
+            <div class="menu-items">
+                <div class="menu-item">Quesadilla de Chorizo <span class="price">$20</span></div>
+                <div class="menu-item">Quesadilla de Machito <span class="price">$22</span></div>
+                <div class="menu-item">Quesadilla de Chuleta <span class="price">$21</span></div>
+                <div class="menu-item">Quesadilla de Alambre <span class="price">$23</span></div>
+                <div class="menu-item">Quesadilla de Arrachera <span class="price">$24</span></div>
+                <div class="menu-item">Quesadilla de Pastor <span class="price">$20</span></div>
+                <div class="menu-item">Quesadilla de Bisteck <span class="price">$22</span></div>
+                <div class="menu-item">Quesadilla de Pollo <span class="price">$19</span></div>
+                <div class="menu-item">Quesadilla de Combinado <span class="price">$25</span></div>
+            </div>
+        </div>
+        
+        <div class="menu-section" id="carboneros-section">
+            <h2>Carboneros</h2>
+            <div class="menu-items">
+                <div class="menu-item">Carbonero de Chorizo <span class="price">$30</span></div>
+                <div class="menu-item">Carbonero de Machito <span class="price">$32</span></div>
+                <div class="menu-item">Carbonero de Chuleta <span class="price">$31</span></div>
+                <div class="menu-item">Carbonero de Alambre <span class="price">$33</span></div>
+                <div class="menu-item">Carbonero de Arrachera <span class="price">$34</span></div>
+                <div class="menu-item">Carbonero de Pastor <span class="price">$30</span></div>
+                <div class="menu-item">Carbonero de Bisteck <span class="price">$32</span></div>
+                <div class="menu-item">Carbonero de Pollo <span class="price">$29</span></div>
+                <div class="menu-item">Carbonero de Combinado <span class="price">$35</span></div>
+            </div>
+        </div>
+        
+        <div class="menu-section" id="gringas-section">
+            <h2>Gringas</h2>
+            <div class="menu-items">
+                <div class="menu-item">Gringa de Chorizo <span class="price">$25</span></div>
+                <div class="menu-item">Gringa de Machito <span class="price">$27</span></div>
+                <div class="menu-item">Gringa de Chuleta <span class="price">$26</span></div>
+                <div class="menu-item">Gringa de Alambre <span class="price">$28</span></div>
+                <div class="menu-item">Gringa de Arrachera <span class="price">$29</span></div>
+                <div class="menu-item">Gringa de Pastor <span class="price">$25</span></div>
+                <div class="menu-item">Gringa de Bisteck <span class="price">$27</span></div>
+                <div class="menu-item">Gringa de Pollo <span class="price">$24</span></div>
+                <div class="menu-item">Gringa de Combinado <span class="price">$30</span></div>
+            </div>
+        </div>
+        
+        <div class="menu-section" id="alambres-section">
+            <h2>Alambres</h2>
+            <div class="menu-items">
+                <div class="menu-item">Alambre de Hawaiana <span class="price">$35</span></div>
+                <div class="menu-item">Alambre de Chuleta <span class="price">$34</span></div>
+                <div class="menu-item">Alambre de Mexicana <span class="price">$33</span></div>
+                <div class="menu-item">Alambre de Alambre <span class="price">$36</span></div>
+                <div class="menu-item">Alambre de Arrachera <span class="price">$37</span></div>
+                <div class="menu-item">Alambre de Pastor <span class="price">$35</span></div>
+                <div class="menu-item">Alambre de Combinado <span class="price">$38</span></div>
+            </div>
+        </div>
+        
+        <div class="menu-section" id="tortas-section">
+            <h2>Tortas</h2>
+            <div class="menu-items">
+                <div class="menu-item">Torta de Hawaiana <span class="price">$40</span></div>
+                <div class="menu-item">Torta de Chuleta <span class="price">$39</span></div>
+                <div class="menu-item">Torta de Mexicana <span class="price">$38</span></div>
+                <div class="menu-item">Torta de Alambre <span class="price">$41</span></div>
+                <div class="menu-item">Torta de Arrachera <span class="price">$42</span></div>
+                <div class="menu-item">Torta de Pastor <span class="price">$40</span></div>
+                <div class="menu-item">Torta de Combinado <span class="price">$43</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-header">
+        <a href="javascript: history.go(-1)"><img class="logo" src="logo.jpg" alt="Logo"></a>
+        <span class="frase">"El arte de comer con Tortilla"</span>
+    </div>
+
+    <input type="email" id="email-field" style="display: none;">
+    <button id="generar-pdf">Generar PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.menu-item');
+            const generarPdfBtn = document.getElementById('generar-pdf');
+            const sections = document.querySelectorAll('.menu-section h2');
+
+            let orden = [];
+
+            items.forEach(item => {
+                item.addEventListener('click', function() {
+                    const guiso = this.textContent.trim().split(' ')[0] + ' ' + this.textContent.trim().split(' ')[1]; // Nombre del platillo
+                    const precio = parseFloat(this.querySelector('.price').textContent.replace('$', '')); // Precio del platillo
+                    const cantidad = prompt(`¿Cuántos ${guiso} quieres?`, '1');
+                    if (cantidad !== null && !isNaN(cantidad) && cantidad.trim() !== '') {
+                        const cantidadNum = parseInt(cantidad);
+                        if (cantidadNum > 0) {
+                            agregarALaOrden(guiso, cantidadNum, precio);
+                        } else {
+                            alert('Por favor ingresa una cantidad válida.');
+                        }
+                    }
+                });
+            });
+
+            function agregarALaOrden(guiso, cantidad, precio) {
+                const guisoExistente = orden.find(item => item.guiso === guiso);
+                if (guisoExistente) {
+                    guisoExistente.cantidad += cantidad;
+                    guisoExistente.precioTotal += cantidad * precio;
+                } else {
+                    orden.push({ guiso, cantidad, precioTotal: cantidad * precio });
+                }
+                alert(`Has agregado ${cantidad} de ${guiso} a tu orden.`);
+            }
+
+            generarPdfBtn.addEventListener('click', function() {
+                generarPDF();
+            });
+
+            function generarPDF() {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                let textoOrden = 'Tu Orden:\n\n';
+                let totalItems = 0;
+                let totalPrecio = 0;
+
+                orden.forEach(item => {
+                    textoOrden += `${item.cantidad} de ${item.guiso} - $${item.precioTotal.toFixed(2)}\n`;
+                    totalItems += item.cantidad;
+                    totalPrecio += item.precioTotal;
+                });
+
+                textoOrden += `\nTotal Cantidad de Consumo: ${totalItems}\nTotal Precio: $${totalPrecio.toFixed(2)}`;
+
+                doc.text(textoOrden, 10, 10);
+                doc.save('Ticket.pdf');
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Inicializa el carrusel usando la clase 'carousel'
+                $('.carousel').slick({
+                    autoplay: true, // Reproducción automática
+                    autoplaySpeed: 2000, // Velocidad de reproducción (en milisegundos)
+                    dots: true, // Muestra los puntos de navegación
+                    arrows: false, // Oculta las flechas de navegación
+                    slidesToShow: 3, // Número de imágenes que se muestran al mismo tiempo
+                    slidesToScroll: 1, // Número de imágenes que se desplazan a la vez
+                    infinite: true, // Bucle infinito
+                    vertical: false // Desplazamiento horizontal
+                });
+            });
+
+
+            sections.forEach(section => {
+                section.addEventListener('click', function() {
+                    const items = this.nextElementSibling;
+                    if (items.style.display === 'none' || items.style.display === '') {
+                        items.style.display = 'block';
+                    } else {
+                        items.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
