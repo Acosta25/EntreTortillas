@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taqueria Entre Tortillas</title>
+    
+
+    <style>
+       
+        /*Estilos*/
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e1e1e1;
+            display: flex;
+            min-height: 100vh;/*Para siempre tener la misma altura ajustable al zoom*/
+            justify-content: center;
+            align-items: center;
+        }
+
+        .div-principal {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden; /*para borrar lo que se salga del div principal*/
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra al borde del div*/
+            background-color: #f7f7f7;
+        }
+
+        
+        .barra-izq {
+            background-color: #90cb5b;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+        .logo {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .menu-izq {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .button-menu {
+            margin: 10px;
+            padding: 10px 20px;/*altura, ancho*/
+            border: none; /*para quitar el borde*/
+            border-radius: 20px;
+            background-color: #718118;
+            color: #fff;
+            text-decoration: none; /*para quitar el subrayado del link*/
+            font-size: 18px;
+            transition: background-color 1s;
+        }
+
+        /*transicion para cuando se pone el mouse sobre el boton*/
+        .button-menu:hover {
+            background-color: #147d5d;
+        }
+       
+        .div-redes-sociales {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .redes-sociales {
+            margin: 0px 5px; /*son el izquierdo y derecho*/
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .redes-sociales img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .segundo-div-derecho {
+            flex: 2;/*medira el doble que el div izquierdo*/
+            padding: 40px;
+            text-align: center;
+        }
+
+        
+        h1, h2 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+       
+        p {
+            color: #555;
+            line-height: 25px; /*para crear un texto mas abierto verticalmente*/
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        
+        .segundo-div-derecho img {
+            max-width: 100%;
+            border-radius: 10px; 
+            margin-bottom: 20px;
+        }
+        .imagen_presentacion{
+            height: 35%;
+            width: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="div-principal">
+        
+        <div class="barra-izq">
+            
+            <img src="logo.jpg" alt="logo" class="logo">
+           
+            <div class="menu-izq">
+                <a href="menus_comida.html" class="button-menu">MENU</a>
+                <a href="contacto.html" class="button-menu">CONTACTO</a>
+                <a href="ubicacion.html" class="button-menu">UBICACIÓN</a>
+                <a href="conocenos.html" class="button-menu">CONÓCENOS</a>
+            </div>
+            
+            <div class="div-redes-sociales">
+                <a href="https://www.facebook.com/profile.php?id=100065688361049" class="redes-sociales"><img src="facebook_logo.png" alt="facebook_logo"></a>
+                <a href="https://www.instagram.com/?hl=en" class="redes-sociales"><img src="instagram_logo.png" alt="instagram_logo"></a>
+                <a href="https://web.whatsapp.com/" class="redes-sociales"><img src="whatsapp_logo.png" alt="whatsapp_logo"></a>
+                <a href="contacto.html" class="redes-sociales"><img src="email_logo.png" alt="Email_logo"></a>
+            </div>
+        </div>
+        
+        <div class="segundo-div-derecho">
+            <h1>Taquería Entre Tortillas</h1>
+            <h2>¡Descubre el auténtico sabor de México!</h2>
+            <p>
+                Bienvenido a Taquería Entre Tortillas, donde no solo te ofrecemos comida excepcional, sino una experiencia completa. Disfruta de nuestro ambiente acogedor, decorado con colores vivos y música alegre, perfecto para momentos inolvidables con amigos y familiares.
+            </p>
+            <img src="tostadaMenu.jpg" alt="taqueria" class="imagen_presentacion">
+            <p>
+                No te pierdas nuestras especialidades de la casa, desde nuestras refrescantes margaritas hasta nuestras auténticas aguas frescas, perfectas para acompañar cualquier comida. ¡Ven y descubre el verdadero sabor de México en cada bocado!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
