@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+<head>
     <title>Lat/Lng Object Literal</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
@@ -22,6 +23,7 @@
             width: 75%;
             border-radius: 25px;
         }
+
         body {
             height: 100%;
             margin: 0;
@@ -31,21 +33,26 @@
             font-family: Arial, sans-serif;
             background-color: #e1e1e1;
             display: flex;
-            min-height: 100vh;/*Para siempre tener la misma altura ajustable al zoom*/
+            min-height: 100vh;
+            /*Para siempre tener la misma altura ajustable al zoom*/
             justify-content: center;
             align-items: center;
         }
+
         .div-principal {
             display: flex;
             max-width: 1200px;
             margin: 20px;
             border-radius: 10px;
-            overflow: hidden; /*para borrar lo que sobresalga del div principal*/
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra al borde del div*/
+            overflow: hidden;
+            /*para borrar lo que sobresalga del div principal*/
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            /* Sombra al borde del div*/
             background-color: #f7f7f7;
             height: 85%;
             width: 95%;
         }
+
         .div-izquierdo {
             display: flex;
             flex-direction: column;
@@ -53,6 +60,7 @@
             padding: 20px;
             background-color: #90cb5b;
         }
+
         .div-derecho {
             height: 100%;
             width: 100%;
@@ -62,14 +70,16 @@
             flex-direction: column;
             padding: 20px;
         }
-        .logo{
-           max-height: 100px;
-           min-height: 100px;
-           max-width: 100px;
-           min-width: 100px;
-           border-radius: 50%;
+
+        .logo {
+            max-height: 100px;
+            min-height: 100px;
+            max-width: 100px;
+            min-width: 100px;
+            border-radius: 50%;
         }
-        .encuentro{
+
+        .encuentro {
             background-color: #63be36;
             color: white;
             border-radius: 10px;
@@ -79,25 +89,29 @@
             align-items: center;
             text-align: center;
         }
-        img{
+
+        img {
             margin: 10px;
             padding: 10px;
             height: 40%;
             width: 30%;
             transition: 0.5s;
         }
-        img:hover{
+
+        img:hover {
             margin: 10px;
             padding: 10px;
             height: 45%;
             width: 35%;
         }
+
         @media only screen and (max-width: 600px) {
             .div-principal {
                 padding: 10px;
             }
 
-            .div-izquierdo, .div-derecho {
+            .div-izquierdo,
+            .div-derecho {
                 margin-bottom: 10px;
             }
 
@@ -116,11 +130,14 @@
                 height: 200px;
             }
         }
-        
     </style>
-    <link href="https://trial.chatcompose.com/static/trial/all/global/export/css/main.5b1bd1fd.css" rel="stylesheet">    <script async type="text/javascript" src="https://trial.chatcompose.com/static/trial/all/global/export/js/main.a7059cb5.js?user=trial_AcostaTaqueria&lang=ES" user="trial_AcostaTaqueria" lang="ES"></script>
-  </head>
-  <body>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+</head>
+
+<body>
     <div class="div-principal">
         <div class="div-izquierdo">
             <a href="javascript: history.go(-1)"><img src="logo.jpg" alt="logo" class="logo"></a>
@@ -136,33 +153,68 @@
         <div class="div-derecho">
             <h1><strong>¡Ubicanos En El Mapa!</strong></h1>
             <div id="map"></div>
+
+            <!-- 
+      The `defer` attribute causes the script to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises. See
+      https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=places&v=weekly"
+                defer></script>
         </div>
-        
-    </div>
-        <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
-        defer
-        ></script>
-    <script>
-        let map;
-        function initMap() {
-            const mapOptions = {
-                zoom: 16,
-                center: { lat: 22.12214, lng: -100.93354 },
-            };
-            map = new google.maps.Map(document.getElementById("map"), mapOptions);
-            const marker = new google.maps.Marker({
-                position: { lat: 22.12214, lng: -100.93354 },
-                map: map,
-            });
-            const infowindow = new google.maps.InfoWindow({
-               content: "<p>Taqueria Entre Tortillas:" + marker.getPosition() + "</p>",
-            });
-            google.maps.event.addListener(marker, "click", () => {
-                infowindow.open(map, marker);
-            });
-        }
-        window.initMap = initMap;
-    </script>
-  </body>
+        <script>
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+            let map;
+            let service;
+            let infowindow;
+            
+            function initMap() {
+                const sydney = new google.maps.LatLng(22.122100092477393, -100.93356047704111);
+
+                infowindow = new google.maps.InfoWindow();
+                map = new google.maps.Map(document.getElementById("map"), {
+                    center: sydney,
+                    zoom: 15,
+                });
+
+                const request = {
+                    query: "Tacos. Entre tortillas, Precursores de La Revolución 757, Trojes del Sur, 78398 San Luis Potosí, S.L.P.",
+                    fields: ["name", "geometry"],
+                };
+
+                service = new google.maps.places.PlacesService(map);
+                service.findPlaceFromQuery(request, (results, status) => {
+                    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                        for (let i = 0; i < results.length; i++) {
+                            createMarker(results[i]);
+                        }
+
+                        map.setCenter(results[0].geometry.location);
+                    }
+                });
+            }
+
+            function createMarker(place) {
+                if (!place.geometry || !place.geometry.location) return;
+
+                const marker = new google.maps.Marker({
+                    map,
+                    position: place.geometry.location,
+                });
+
+                google.maps.event.addListener(marker, "click", () => {
+                    infowindow.setContent(place.name || "");
+                    infowindow.open(map);
+                });
+            }
+
+            window.initMap = initMap;
+        </script>
+</body>
+
 </html>
