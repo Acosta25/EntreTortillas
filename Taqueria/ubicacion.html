@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <title>Lat/Lng Object Literal</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+    <style>
+        #map {
+            height: 75%;
+            width: 75%;
+            border-radius: 25px;
+        }
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e1e1e1;
+            display: flex;
+            min-height: 100vh;/*Para siempre tener la misma altura ajustable al zoom*/
+            justify-content: center;
+            align-items: center;
+        }
+        .div-principal {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden; /*para borrar lo que sobresalga del div principal*/
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra al borde del div*/
+            background-color: #f7f7f7;
+            height: 85%;
+            width: 95%;
+        }
+        .div-izquierdo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #90cb5b;
+        }
+        .div-derecho {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .logo{
+           max-height: 100px;
+           min-height: 100px;
+           max-width: 100px;
+           min-width: 100px;
+           border-radius: 50%;
+        }
+        .encuentro{
+            background-color: #63be36;
+            color: white;
+            border-radius: 10px;
+            margin-top: 21px;
+            padding: 10px;
+            width: 200px;
+            align-items: center;
+            text-align: center;
+        }
+        img{
+            margin: 10px;
+            padding: 10px;
+            height: 40%;
+            width: 30%;
+            transition: 0.5s;
+        }
+        img:hover{
+            margin: 10px;
+            padding: 10px;
+            height: 45%;
+            width: 35%;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <div class="div-principal">
+        <div class="div-izquierdo">
+            <a href="taqueria_paginaPrincipal.html"><img src="logo.jpg" alt="logo" class="logo"></a>
+            <div class="encuentro">
+                <p><strong>Nos Ubicamos En Calle Precursores de la Revolución 757, San Luis Potosí, Mexico</strong></p>
+            </div>
+            <div class="encuentro">
+                <p><strong>¿Aún no nos encuentras?</strong></p>
+                <p><strong>Te Enseñamos a Como LLegar</strong></p>
+                <a href="https://maps.app.goo.gl/BNAo5NeMvTDBi8W7A"><img src="mapsMarker.webp" alt="marker"></a>
+            </div>
+        </div>
+        <div class="div-derecho">
+            <h1><strong>¡Ubicanos En El Mapa!</strong></h1>
+            <div id="map"></div>
+        </div>
+        
+    </div>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+        defer
+        ></script>
+    <script>
+        let map;
+        function initMap() {
+            const mapOptions = {
+                zoom: 16,
+                center: { lat: 22.12214, lng: -100.93354 },
+            };
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            const marker = new google.maps.Marker({
+                position: { lat: 22.12214, lng: -100.93354 },
+                map: map,
+            });
+            const infowindow = new google.maps.InfoWindow({
+               content: "<p>Taqueria Entre Tortillas:" + marker.getPosition() + "</p>",
+            });
+            google.maps.event.addListener(marker, "click", () => {
+                infowindow.open(map, marker);
+            });
+        }
+        window.initMap = initMap;
+    </script>
+  </body>
+</html>
